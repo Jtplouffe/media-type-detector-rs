@@ -17,6 +17,7 @@ impl<'a> MediaType<'a> {
     }
 }
 
+#[derive(Debug)]
 pub(crate) struct MediaTypeMagic<'a> {
     magic: &'a [u8],
     offset: usize,
@@ -34,7 +35,7 @@ impl<'a> MediaTypeMagic<'a> {
         if header.len() < self.magic.len() + self.offset {
             false
         } else {
-            &header[self.offset..self.magic.len()] == self.magic
+            &header[self.offset..self.offset + self.magic.len()] == self.magic
         }
     }
 }
