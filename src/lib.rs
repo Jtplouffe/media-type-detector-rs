@@ -37,7 +37,7 @@ const MEDIA_TYPES: &[MediaType] = &[
     ]),
 ];
 
-fn detect_media_type(data: &[u8]) -> Option<&str> {
+pub fn detect_media_type(data: &[u8]) -> Option<&str> {
     for media_type in MEDIA_TYPES {
         if media_type.matches(data) {
             return Some(media_type.name);
